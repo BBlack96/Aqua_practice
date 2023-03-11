@@ -2,12 +2,21 @@ import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
-
+capabilities = {
+    "browserName": "chrome",
+    "browserVersion": "110.0",
+    "selenoid:options": {
+        "enableVideo": True,
+        "enableVNC": True
+    }
+}
 
 options = webdriver.ChromeOptions()
 options.add_extension("/home/demo/drivers/adblock.crx")
-
-driver = webdriver.Chrome(options=options)
+driver = webdriver.Remote(
+    command_executor="http://127.0.1.1:4444/wd/hub",
+    desired_capabilities=capabilities,
+    options=options)
 
 url = 'http://automationexercise.com/'
 driver.maximize_window()
