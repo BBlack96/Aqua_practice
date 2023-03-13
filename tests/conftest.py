@@ -1,7 +1,6 @@
+import time
 import pytest
 from selenium import webdriver
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 
 # Фикстура для запуска тестов с использованием селеноида
 @pytest.fixture(scope="function")
@@ -22,7 +21,7 @@ def selenoid_fixture():
         options=options
     )
     driver.maximize_window()
-    WebDriverWait(driver, 10).until(EC.number_of_windows_to_be(2))
+    time.sleep(2)
     driver.switch_to.window(driver.window_handles[1])
     driver.close()
     driver.switch_to.window(driver.window_handles[0])
