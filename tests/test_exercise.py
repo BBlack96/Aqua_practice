@@ -1,6 +1,7 @@
 import time
 from selenium.webdriver.common.by import By
 
+
 url = 'http://automationexercise.com/'
 
 def test_login(selenoid_fixture):
@@ -10,7 +11,6 @@ def test_login(selenoid_fixture):
     name_field = driver.find_element(By.XPATH, "//input[@placeholder='Name']").send_keys("test")
     email_field = driver.find_element(By.XPATH, "//input[@data-qa='signup-email']").send_keys("bogdan+12@mail.com")
     sign_button = driver.find_element(By.XPATH, "//button[normalize-space()='Signup']").click()
-    time.sleep(5)
     text_check = driver.find_element(By.XPATH, "//b[normalize-space()='Enter Account Information']").click()
     gender_check = driver.find_element(By.XPATH, "//input[@id='id_gender1']").click()
     name = driver.find_element(By.XPATH, "//input[@id='name']").send_keys('Bogdan')

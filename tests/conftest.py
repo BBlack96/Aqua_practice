@@ -2,6 +2,7 @@ import time
 import pytest
 from selenium import webdriver
 
+
 # Фикстура для запуска тестов с использованием селеноида
 @pytest.fixture(scope="function")
 def selenoid_fixture():
@@ -21,6 +22,7 @@ def selenoid_fixture():
         options=options
     )
     driver.maximize_window()
+    driver.implicitly_wait(5)
     time.sleep(2)
     driver.switch_to.window(driver.window_handles[1])
     driver.close()
